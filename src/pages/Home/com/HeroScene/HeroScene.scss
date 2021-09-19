@@ -1,0 +1,58 @@
+.hero-scene {
+  position: relative;
+  height: 100vh;
+  background-color: var(--green-primary);
+
+  .hero-layer {
+    width: 100%;
+    height: 100%;
+    background-size: auto 101%;
+    background-position: center;
+    background-repeat: repeat-x;
+    position: fixed;
+
+    &.foreground {
+      position: absolute;
+    }
+    &.text {
+      background-repeat: no-repeat;
+    }
+    &.scroll-button {
+      background-repeat: no-repeat;
+      animation: DownArrow 4s linear infinite;
+      width: 8vh;
+      height: 8vh;
+      left: calc(50% - 2vh);
+      top: 30vh;
+      backface-visibility: hidden;
+      transition: opacity 0.2s ease-in-out;
+      opacity: 0.8;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  @keyframes DownArrow {
+    from {
+      margin-top: 0;
+    }
+    65% {
+      margin-top: 20px;
+    }
+    to {
+      margin-top: -0;
+    }
+  }
+
+  @media only screen and (max-width: 750px) {
+    .hero-layer {
+      &.text {
+        background-size: auto 75%;
+        top: -50px;
+      }
+    }
+  }
+}

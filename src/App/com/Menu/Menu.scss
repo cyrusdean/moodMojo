@@ -1,0 +1,51 @@
+@import '~/lib/vars';
+
+nav.menu {
+  font-size: 4em;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: var(--menu-height);
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+
+  .spotify-link {
+    border-right: 2px solid #ffffff;
+    padding-right: 10px;
+
+    img {
+      height: 48px;
+    }
+  }
+  .home-link img {
+    height: 30px;
+    padding-left: 13px;
+  }
+  a {
+    color: #ffffff;
+
+    button {
+      vertical-align: top;
+      margin-top: 15px;
+      margin-right: 10px;
+      background-color: var(--green-primary);
+
+      svg {
+        vertical-align: top;
+        margin-top: 2px;
+      }
+    }
+    img {
+      vertical-align: middle;
+    }
+  }
+
+  @media only screen and (max-width: $tablet) {
+    button span,
+    .spotify-link {
+      display: none;
+    }
+  }
+}

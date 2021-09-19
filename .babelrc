@@ -1,0 +1,11 @@
+{
+  "presets": ["@babel/preset-react", "@babel/preset-env"],
+  "plugins": [
+    "inline-dotenv",
+    "@babel/plugin-transform-modules-commonjs",
+    ["@babel/plugin-proposal-class-properties", {}, "unique-1"],
+    ["@babel/plugin-proposal-optional-chaining", {}, "unique-2"],
+    ["@babel/plugin-transform-runtime", { "regenerator": true }, "unique-3"],
+    ["add-react-displayname"]
+  ]
+}

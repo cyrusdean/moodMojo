@@ -1,0 +1,84 @@
+@import '~/lib/vars';
+
+.home {
+  position: relative;
+  top: calc(-1 * var(--menu-height));
+
+  .step {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: var(--blue-primary);
+    padding: 50px;
+
+    > {
+      h1,
+      div,
+      svg {
+        width: 50%;
+        margin: 0 30px;
+        max-height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+    &.records-step {
+      h1 {
+        color: #0076e9;
+      }
+      svg {
+        padding-left: 15%;
+        box-sizing: border-box;
+        overflow: visible;
+      }
+    }
+    &.sliders-step {
+      background-color: #01e08f;
+    }
+    &.headphones-step {
+      padding-bottom: 150px;
+
+      h1 {
+        color: #01e08f;
+      }
+      button {
+        display: block;
+        margin: 0 auto;
+        color: var(--green-primary);
+        border-color: var(--green-primary);
+        font-size: 30px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: $desktop) {
+    .step {
+      flex-wrap: wrap;
+
+      > h1,
+      div {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 50px;
+      }
+      svg {
+        margin: 0 auto;
+      }
+      &.sliders-step {
+        flex-direction: column-reverse;
+      }
+    }
+  }
+  @media only screen and (max-width: $laptop) {
+    .step {
+      h1 {
+        font-size: 55px;
+      }
+      svg {
+        max-height: 25vh;
+      }
+    }
+  }
+}

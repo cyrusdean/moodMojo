@@ -1,0 +1,81 @@
+.headphones-svg {
+  .st0 {
+    stroke: #01e08f;
+    fill: #1a5792;
+    stroke-width: 15;
+  }
+  .st1 {
+    fill: #27282a;
+  }
+  .st2 {
+    clip-path: url(#SVGID_2_);
+    fill: #01e08f;
+  }
+  .st3 {
+    clip-path: url(#SVGID_4_);
+    fill: #01e08f;
+  }
+  .st4 {
+    clip-path: url(#SVGID_6_);
+    fill: #00c27b;
+  }
+  .st5 {
+    clip-path: url(#SVGID_8_);
+    fill: #00c27b;
+  }
+  .st6 {
+    clip-path: url(#SVGID_10_);
+    fill: #01e08f;
+  }
+  .st7 {
+    clip-path: url(#SVGID_12_);
+    fill: #303133;
+  }
+  .st8 {
+    clip-path: url(#SVGID_14_);
+    fill: #303133;
+  }
+  .st9 {
+    clip-path: url(#SVGID_16_);
+    fill: #00c27b;
+  }
+  .st10 {
+    clip-path: url(#SVGID_18_);
+    fill: #1d1e20;
+  }
+  .st11 {
+    clip-path: url(#SVGID_20_);
+    fill: #1d1e20;
+  }
+  .left-pulse {
+    animation: PulseRight 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+  }
+
+  .right-pulse {
+    animation: PulseLeft 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+  }
+  @keyframes PulseRight {
+    20%,
+    80% {
+      transform: translate3d(2px, 0, 0);
+    }
+
+    40%,
+    60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+  @keyframes PulseLeft {
+    10%,
+    90% {
+      transform: translate3d(-2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  }
+}
