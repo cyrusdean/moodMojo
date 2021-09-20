@@ -19,7 +19,7 @@ const App = ({ history }) => {
           <Route component={Default} />
         </Switch>
       ) : (
-        <Route exact path="/" component={PageObj[process.env.RENDER_PAGE]} />
+        <Route path="/" component={PageObj[process.env.RENDER_PAGE]} />
       )}
     </>
   );
