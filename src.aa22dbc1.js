@@ -27517,11 +27517,12 @@ var capitalize = function capitalize(s) {
 
 var App = function App(_ref) {
   var history = _ref.history;
-  console.log(process && process.env && process.env.RENDER_PATH || "generator");
-  var renderPath = process && process.env && process.env.RENDER_PATH || "generator";
+  console.log(process && process.env && process.env.RENDER_PATH || "home");
+  var renderPath = process && process.env && process.env.RENDER_PATH || "home";
   console.log("/".concat(renderPath));
   var renderComponent = renderPath.split('-').map(capitalize).join('');
   console.log(renderComponent);
+  console.log(PageObj[renderComponent]);
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Menu.default, {
     history: history
   }), (process && process.env && process.env.NODE_ENV || "production") === 'development' ? /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -27537,8 +27538,7 @@ var App = function App(_ref) {
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     component: _pages.Default
   })) : /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    exact: true,
-    path: "/".concat(renderPath),
+    path: "/",
     component: PageObj[renderComponent]
   }));
 };
@@ -27576,4 +27576,4 @@ var _App = _interopRequireDefault(require("./App"));
 
 (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_reactRouterDom.MemoryRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('app'));
 },{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-dom":"NKHc","react-router-dom":"obMO","./App":"Sz1i"}]},{},["Focm"], null)
-//# sourceMappingURL=src.f996e6f4.js.map
+//# sourceMappingURL=src.aa22dbc1.js.map
