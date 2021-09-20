@@ -14,6 +14,7 @@ const App = ({ history }) => {
   console.log(`/${renderPath}`)
   const renderComponent = renderPath.split('-').map(capitalize).join('')
   console.log(renderComponent)
+  console.log(PageObj[renderComponent])
   return (
     <>
       <Menu history={history} />
@@ -25,7 +26,7 @@ const App = ({ history }) => {
           <Route component={Default} />
         </Switch>
       ) : (
-        <Route exact path={`/${renderPath}`} component={PageObj[renderComponent]} />
+        <Route path="/" component={PageObj[renderComponent]} />
       )}
     </>
   );
