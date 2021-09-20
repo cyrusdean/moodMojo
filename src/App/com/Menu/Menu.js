@@ -1,12 +1,11 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { FaSignOutAlt, FaHeadphones, FaSpotify } from 'react-icons/fa';
 import MoodMojoLogo from '~/lib/images/moodmojo-logo.svg';
 import SpotifyLogo from '~/lib/images/Spotify_Logo_RGB_White.png';
 import { getAuthorizeLink } from '~/lib/utils';
 import './Menu.scss';
 
-const Menu = ({ history }) => {
+const Menu = () => {
   const authorizeLink = getAuthorizeLink();
 
   return (
@@ -34,7 +33,7 @@ const Menu = ({ history }) => {
           <a
             onClick={() => {
               localStorage.clear();
-              history.push('/');
+              window.location.pathname = '/'
             }}
           >
             <button>
@@ -55,4 +54,4 @@ const Menu = ({ history }) => {
   );
 };
 
-export default withRouter(Menu);
+export default Menu;

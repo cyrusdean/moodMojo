@@ -27421,8 +27421,6 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactRouterDom = require("react-router-dom");
-
 var _fa = require("react-icons/fa");
 
 var _moodmojoLogo = _interopRequireDefault(require("~/lib/images/moodmojo-logo.svg"));
@@ -27433,8 +27431,7 @@ var _utils = require("~/lib/utils");
 
 require("./Menu.scss");
 
-var Menu = function Menu(_ref) {
-  var history = _ref.history;
+var Menu = function Menu() {
   var authorizeLink = (0, _utils.getAuthorizeLink)();
   return /*#__PURE__*/_react.default.createElement("nav", {
     className: "menu"
@@ -27455,7 +27452,7 @@ var Menu = function Menu(_ref) {
   }, /*#__PURE__*/_react.default.createElement("button", null, /*#__PURE__*/_react.default.createElement(_fa.FaHeadphones, null), " ", /*#__PURE__*/_react.default.createElement("span", null, "Generator"))), /*#__PURE__*/_react.default.createElement("a", {
     onClick: function onClick() {
       localStorage.clear();
-      history.push('/');
+      window.location.pathname = '/';
     }
   }, /*#__PURE__*/_react.default.createElement("button", null, /*#__PURE__*/_react.default.createElement(_fa.FaSignOutAlt, null), " ", /*#__PURE__*/_react.default.createElement("span", null, "Logout")))) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
     href: authorizeLink
@@ -27463,11 +27460,9 @@ var Menu = function Menu(_ref) {
 };
 
 Menu.displayName = "Menu";
-
-var _default = (0, _reactRouterDom.withRouter)(Menu);
-
+var _default = Menu;
 exports.default = _default;
-},{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-router-dom":"obMO","react-icons/fa":"n1yy","~/lib/images/moodmojo-logo.svg":"eX8Q","~/lib/images/Spotify_Logo_RGB_White.png":"Nsqm","~/lib/utils":"UOOq","./Menu.scss":"DO1B"}],"mmeO":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-icons/fa":"n1yy","~/lib/images/moodmojo-logo.svg":"eX8Q","~/lib/images/Spotify_Logo_RGB_White.png":"Nsqm","~/lib/utils":"UOOq","./Menu.scss":"DO1B"}],"mmeO":[function(require,module,exports) {
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -27517,8 +27512,8 @@ var capitalize = function capitalize(s) {
 
 var App = function App(_ref) {
   var history = _ref.history;
-  console.log(process && process.env && process.env.RENDER_PATH || "home");
-  var renderPath = process && process.env && process.env.RENDER_PATH || "home";
+  console.log(process && process.env && process.env.RENDER_PATH || "generator");
+  var renderPath = process && process.env && process.env.RENDER_PATH || "generator";
   console.log("/".concat(renderPath));
   var renderComponent = renderPath.split('-').map(capitalize).join('');
   console.log(renderComponent);
@@ -27576,4 +27571,4 @@ var _App = _interopRequireDefault(require("./App"));
 
 (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_reactRouterDom.MemoryRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('app'));
 },{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-dom":"NKHc","react-router-dom":"obMO","./App":"Sz1i"}]},{},["Focm"], null)
-//# sourceMappingURL=src.aa22dbc1.js.map
+//# sourceMappingURL=src.315d9a1f.js.map
