@@ -26,7 +26,7 @@ const App = ({ history }) => {
           <Route component={Default} />
         </Switch>
       ) : (
-        <Route path="/" component={PageObj[renderComponent]} />
+        <Route component={PageObj[renderComponent]} />
       )}
     </>
   );

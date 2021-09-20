@@ -27512,8 +27512,8 @@ var capitalize = function capitalize(s) {
 
 var App = function App(_ref) {
   var history = _ref.history;
-  console.log(process && process.env && process.env.RENDER_PATH || "spotify-callback");
-  var renderPath = process && process.env && process.env.RENDER_PATH || "spotify-callback";
+  console.log(process && process.env && process.env.RENDER_PATH || "default");
+  var renderPath = process && process.env && process.env.RENDER_PATH || "default";
   console.log("/".concat(renderPath));
   var renderComponent = renderPath.split('-').map(capitalize).join('');
   console.log(renderComponent);
@@ -27533,7 +27533,6 @@ var App = function App(_ref) {
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     component: _pages.Default
   })) : /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    path: "/",
     component: PageObj[renderComponent]
   }));
 };
@@ -27571,4 +27570,4 @@ var _App = _interopRequireDefault(require("./App"));
 
 (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_reactRouterDom.MemoryRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('app'));
 },{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-dom":"NKHc","react-router-dom":"obMO","./App":"Sz1i"}]},{},["Focm"], null)
-//# sourceMappingURL=src.a5a9c702.js.map
+//# sourceMappingURL=src.30d54fd6.js.map
