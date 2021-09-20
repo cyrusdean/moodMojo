@@ -8,9 +8,9 @@
   "private": true,
   "scripts": {
     "dev": "parcel -p 4000 watch ./src/index.html",
-    "build-home": "RENDER_PAGE=Home parcel build --no-minify ./src/index.html --public-url ./ --out-file index.html",
-    "build-generator": "RENDER_PAGE=Generator parcel build --no-minify ./src/index.html --public-url ./ --out-file generator.html",
-    "build-spotify-callback": "RENDER_PAGE=SpotifyCallback parcel build --no-minify ./src/index.html --public-url ./ --out-file spotify-callback.html",
+    "build-home": "RENDER_PAGE='' parcel build --no-minify ./src/index.html --public-url ./ --out-file index.html",
+    "build-generator": "RENDER_PAGE=generator parcel build --no-minify ./src/index.html --public-url ./ --out-file generator.html",
+    "build-spotify-callback": "RENDER_PAGE=spotify-callback parcel build --no-minify ./src/index.html --public-url ./ --out-file spotify-callback.html",
     "build-default": "RENDER_PAGE=Default parcel build --no-minify ./src/index.html --public-url ./ --out-file index.html",
     "build-pages": "npm run build-home & npm run build-generator & npm run build-spotify-callback & npm run build-default",
     "build": "rm -rf dist && npm run build-pages && cp ./CNAME ./dist",
