@@ -27271,8 +27271,6 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactRouterDom = require("react-router-dom");
-
 var _com = require("./com");
 
 require("./Home.scss");
@@ -27286,15 +27284,15 @@ var Home = function Home() {
     className: "step sliders-step"
   }, /*#__PURE__*/_react.default.createElement(_com.Sliders, null), /*#__PURE__*/_react.default.createElement("h1", null, "Adjust Your Mood Setting Preferences")), /*#__PURE__*/_react.default.createElement("div", {
     className: "step headphones-step"
-  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, " Listen To Your Playlist on Spotify!"), /*#__PURE__*/_react.default.createElement(_reactRouterDom.NavLink, {
-    to: "/generator"
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, " Listen To Your Playlist on Spotify!"), /*#__PURE__*/_react.default.createElement("a", {
+    href: "/generator"
   }, /*#__PURE__*/_react.default.createElement("button", null, "Get Your Custom Playlist!"))), /*#__PURE__*/_react.default.createElement(_com.Headphones, null)));
 };
 
 Home.displayName = "Home";
 var _default = Home;
 exports.default = _default;
-},{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-router-dom":"obMO","./com":"MIb2","./Home.scss":"DO1B"}],"YzF7":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","./com":"MIb2","./Home.scss":"DO1B"}],"YzF7":[function(require,module,exports) {
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -27448,13 +27446,13 @@ var Menu = function Menu(_ref) {
     rel: "noreferrer"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _Spotify_Logo_RGB_White.default
-  })), /*#__PURE__*/_react.default.createElement(_reactRouterDom.NavLink, {
-    to: "/",
+  })), /*#__PURE__*/_react.default.createElement("a", {
+    href: "/",
     className: "home-link"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _moodmojoLogo.default
-  }))), localStorage.getItem('accessToken') ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.NavLink, {
-    to: "/generator"
+  }))), localStorage.getItem('accessToken') ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+    href: "/generator"
   }, /*#__PURE__*/_react.default.createElement("button", null, /*#__PURE__*/_react.default.createElement(_fa.FaHeadphones, null), " ", /*#__PURE__*/_react.default.createElement("span", null, "Generator"))), /*#__PURE__*/_react.default.createElement("a", {
     onClick: function onClick() {
       localStorage.clear();
@@ -27516,7 +27514,7 @@ var PageObj = {
 
 var App = function App(_ref) {
   var history = _ref.history;
-  console.log(process && process.env && process.env.RENDER_PAGE || "SpotifyCallback");
+  console.log(process && process.env && process.env.RENDER_PAGE || "Generator");
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Menu.default, {
     history: history
   }), (process && process.env && process.env.NODE_ENV || "production") === 'development' ? /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -27534,7 +27532,7 @@ var App = function App(_ref) {
   })) : /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
     path: "/",
-    component: PageObj[process && process.env && process.env.RENDER_PAGE || "SpotifyCallback"]
+    component: PageObj[process && process.env && process.env.RENDER_PAGE || "Generator"]
   }));
 };
 
@@ -27571,4 +27569,4 @@ var _App = _interopRequireDefault(require("./App"));
 
 (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_reactRouterDom.HashRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('app'));
 },{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-dom":"NKHc","react-router-dom":"obMO","./App":"Sz1i"}]},{},["Focm"], null)
-//# sourceMappingURL=src.629f637f.js.map
+//# sourceMappingURL=src.0798147c.js.map
