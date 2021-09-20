@@ -27487,6 +27487,7 @@ Object.defineProperty(exports, "default", {
 
 var _Menu = _interopRequireDefault(require("./Menu"));
 },{"@babel/runtime/helpers/interopRequireDefault":"SpGf","./Menu":"BuUn"}],"iVK9":[function(require,module,exports) {
+var process = require("process");
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -27506,11 +27507,19 @@ var _Menu = _interopRequireDefault(require("./com/Menu"));
 
 require("./App.scss");
 
+var PageObj = {
+  Default: _pages.Default,
+  Generator: _pages.Generator,
+  Home: _pages.Home,
+  SpotifyCallback: _pages.SpotifyCallback
+};
+
 var App = function App(_ref) {
   var history = _ref.history;
+  console.log(process && process.env && process.env.RENDER_PAGE || "Default");
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Menu.default, {
     history: history
-  }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  }), (process && process.env && process.env.NODE_ENV || "production") === 'development' ? /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
     path: "/",
     component: _pages.Home
@@ -27522,12 +27531,16 @@ var App = function App(_ref) {
     component: _pages.SpotifyCallback
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     component: _pages.Default
-  })));
+  })) : /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    exact: true,
+    path: "/",
+    component: PageObj[process && process.env && process.env.RENDER_PAGE || "Default"]
+  }));
 };
 
 var _default = App;
 exports.default = _default;
-},{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-router-dom":"obMO","~/pages":"U7IS","./com/Menu":"mmeO","./App.scss":"DO1B"}],"Sz1i":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-router-dom":"obMO","~/pages":"U7IS","./com/Menu":"mmeO","./App.scss":"DO1B","process":"pBGv"}],"Sz1i":[function(require,module,exports) {
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -27558,4 +27571,4 @@ var _App = _interopRequireDefault(require("./App"));
 
 (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_reactRouterDom.HashRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('app'));
 },{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-dom":"NKHc","react-router-dom":"obMO","./App":"Sz1i"}]},{},["Focm"], null)
-//# sourceMappingURL=src.084ab9e0.js.map
+//# sourceMappingURL=src.e6164df1.js.map
