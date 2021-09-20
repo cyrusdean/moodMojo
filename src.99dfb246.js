@@ -27567,6 +27567,6 @@ var _reactRouterDom = require("react-router-dom");
 
 var _App = _interopRequireDefault(require("./App"));
 
-(0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_reactRouterDom.HashRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('app'));
+(0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_reactRouterDom.MemoryRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('app'));
 },{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-dom":"NKHc","react-router-dom":"obMO","./App":"Sz1i"}]},{},["Focm"], null)
-//# sourceMappingURL=src.70cabcb8.js.map
+//# sourceMappingURL=src.99dfb246.js.map
