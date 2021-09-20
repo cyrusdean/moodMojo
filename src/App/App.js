@@ -6,15 +6,8 @@ import './App.scss';
 
 const PageObj = { Default, Generator, Home, SpotifyCallback }
 
-const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
-
 const App = ({ history }) => {
-  console.log(process.env.RENDER_PATH);
-  const renderPath = process.env.RENDER_PATH;
-  console.log(`/${renderPath}`)
-  const renderComponent = renderPath.split('-').map(capitalize).join('')
-  console.log(renderComponent)
-  console.log(PageObj[renderComponent])
+  console.log(process.env.RENDER_PAGE);
   return (
     <>
       <Menu history={history} />
@@ -26,7 +19,7 @@ const App = ({ history }) => {
           <Route component={Default} />
         </Switch>
       ) : (
-        <Route component={PageObj[renderComponent]} />
+        <Route component={PageObj[process.env.RENDER_PAGE]} />
       )}
     </>
   );
