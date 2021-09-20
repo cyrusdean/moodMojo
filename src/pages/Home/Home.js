@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { Headphones, Sliders, Records, HeroScene } from './com';
 import './Home.scss';
 
@@ -18,9 +17,9 @@ const Home = () => {
       <div className="step headphones-step">
         <div>
           <h1> Listen To Your Playlist on Spotify!</h1>
-          <NavLink to="/generator">
+          <a href="/generator">
             <button>Get Your Custom Playlist!</button>
-          </NavLink>
+          </a>
         </div>
         <Headphones />
       </div>

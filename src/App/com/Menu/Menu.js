@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { FaSignOutAlt, FaHeadphones, FaSpotify } from 'react-icons/fa';
 import MoodMojoLogo from '~/lib/images/moodmojo-logo.svg';
 import SpotifyLogo from '~/lib/images/Spotify_Logo_RGB_White.png';
@@ -20,17 +20,17 @@ const Menu = ({ history }) => {
         >
           <img src={SpotifyLogo} />
         </a>
-        <NavLink to="/" className="home-link">
+        <a href="/" className="home-link">
           <img src={MoodMojoLogo} />
-        </NavLink>
+        </a>
       </div>
       {localStorage.getItem('accessToken') ? (
         <div>
-          <NavLink to="/generator">
+          <a href="/generator">
             <button>
               <FaHeadphones /> <span>Generator</span>
             </button>
-          </NavLink>
+          </a>
           <a
             onClick={() => {
               localStorage.clear();
