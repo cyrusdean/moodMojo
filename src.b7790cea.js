@@ -27511,9 +27511,15 @@ var PageObj = {
   SpotifyCallback: _pages.SpotifyCallback
 };
 
+var capitalize = function capitalize(s) {
+  return s && s[0].toUpperCase() + s.slice(1);
+};
+
 var App = function App(_ref) {
   var history = _ref.history;
-  console.log(process && process.env && process.env.RENDER_PAGE || "Generator");
+  console.log(process && process.env && process.env.RENDER_PATH || undefined);
+  var renderPath = process && process.env && process.env.RENDER_PATH || undefined;
+  var renderComponent = renderPath.split('-').map(capitalize).join('');
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Menu.default, {
     history: history
   }), (process && process.env && process.env.NODE_ENV || "production") === 'development' ? /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -27529,8 +27535,9 @@ var App = function App(_ref) {
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     component: _pages.Default
   })) : /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    path: "/",
-    component: PageObj[process && process.env && process.env.RENDER_PAGE || "Generator"]
+    exact: true,
+    path: "/".concat(renderPath),
+    component: PageObj[renderComponent]
   }));
 };
 
@@ -27567,4 +27574,4 @@ var _App = _interopRequireDefault(require("./App"));
 
 (0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_reactRouterDom.MemoryRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('app'));
 },{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-dom":"NKHc","react-router-dom":"obMO","./App":"Sz1i"}]},{},["Focm"], null)
-//# sourceMappingURL=src.b341aca4.js.map
+//# sourceMappingURL=src.b7790cea.js.map
