@@ -4,16 +4,23 @@ import { Default, Generator, Home, SpotifyCallback } from '~/pages';
 import Menu from './com/Menu';
 import './App.scss';
 
+const PageObj = { Default, Generator, Home, SpotifyCallback }
+
 const App = ({ history }) => {
+  console.log(process.env.RENDER_PAGE);
   return (
     <>
       <Menu history={history} />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/generator" component={Generator} />
-        <Route path="/spotify-callback" component={SpotifyCallback} />
-        <Route component={Default} />
-      </Switch>
+      {process.env.NODE_ENV === 'development' ? (
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/generator" component={Generator} />
+          <Route path="/spotify-callback" component={SpotifyCallback} />
+          <Route component={Default} />
+        </Switch>
+      ) : (
+        <Route exact path="/" component={PageObj[process.env.RENDER_PAGE]} />
+      )}
     </>
   );
 };

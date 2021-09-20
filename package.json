@@ -8,9 +8,12 @@
   "private": true,
   "scripts": {
     "dev": "parcel -p 4000 watch ./src/index.html",
-    "build": "parcel build --no-minify ./src/index.html --public-url ./ --bundle-node-modules true && cp ./CNAME ./dist",
+    "build-home": "RENDER_PAGE=Home parcel build --no-minify ./src/index.html --public-url ./ --out-file index.html",
+    "build-generator": "RENDER_PAGE=Generator parcel build --no-minify ./src/index.html --public-url ./ --out-file generator.html",
+    "build-spotify-callback": "RENDER_PAGE=SpotifyCallback parcel build --no-minify ./src/index.html --public-url ./ --out-file spotify-callback.html",
+    "build-default": "RENDER_PAGE=Default parcel build --no-minify ./src/index.html --public-url ./ --out-file index.html",
+    "build": "rm -rf dist && npm run build-home & npm run build-generator & npm run build-spotify-callback & npm run build-default && cp ./CNAME ./dist",
     "deploy": "git subtree push --prefix dist origin deploy",
-    "prebuild": "rm -rf dist",
     "eslint": "eslint --fix ./src",
     "packages:force-update-latest": "ncu -u"
   },

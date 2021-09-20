@@ -1,3 +1,6 @@
 # dependencies
 /node_modules
 /back/config.js
+/.cache/
+.cache
+/.cache
