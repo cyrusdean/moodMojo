@@ -25286,7 +25286,7 @@ var _getOffset = _interopRequireDefault(require("getOffset"));
 var _sweetalert = _interopRequireDefault(require("sweetalert2"));
 
 var SPOTIFY_CLIENT_ID = 'e7e008fe415447bba73e3e6ce86e8ecb';
-var SPOTIFY_REDIRECT_URI = ['development', 'staging'].includes(process && process.env && process.env.NODE_ENV || "production") ? 'http:localhost:4000/spotify-callback' : 'https://moodmojo.cyrusdean.com/spotify-callback';
+var SPOTIFY_REDIRECT_URI = 'development' === (process && process.env && process.env.NODE_ENV || "production") ? 'http://localhost:4000/spotify-callback' : 'https://moodmojo.cyrusdean.com/spotify-callback';
 
 var checkAccessTokenExpiration = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
@@ -25322,7 +25322,7 @@ var checkAccessTokenExpiration = /*#__PURE__*/function () {
 }();
 
 var getFromAPI = /*#__PURE__*/function () {
-  var _ref2 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(endpoint, resourceString) {
+  var _ref2 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(endpoint) {
     var method,
         body,
         accessToken,
@@ -25332,8 +25332,8 @@ var getFromAPI = /*#__PURE__*/function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            method = _args2.length > 2 && _args2[2] !== undefined ? _args2[2] : 'GET';
-            body = _args2.length > 3 ? _args2[3] : undefined;
+            method = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : 'GET';
+            body = _args2.length > 2 ? _args2[2] : undefined;
             accessToken = localStorage.getItem('accessToken');
             checkAccessTokenExpiration();
             headers = {
@@ -25346,7 +25346,7 @@ var getFromAPI = /*#__PURE__*/function () {
               body: body
             }).then(function (res) {
               return res.json().then(function (json) {
-                return res.status >= 200 || res.status < 300 ? json : new Error("Could not complete the request for ".concat(resourceString, "."));
+                return res.status >= 200 || res.status < 300 ? json : new Error("Could not complete the request for ".concat(endpoint, "."));
               });
             }));
 
@@ -25358,7 +25358,7 @@ var getFromAPI = /*#__PURE__*/function () {
     }, _callee2);
   }));
 
-  return function getFromAPI(_x, _x2) {
+  return function getFromAPI(_x) {
     return _ref2.apply(this, arguments);
   };
 }();
@@ -25415,6 +25415,8 @@ var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/de
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _utils = require("~/lib/utils");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -25426,18 +25428,25 @@ var getRecommendations = function getRecommendations(_ref) {
       targetValues = _ref.targetValues;
   var endpointAndQueryString = '/recommendations?limit=50';
   endpointAndQueryString += "&seed_tracks=".concat(seedTrackIds.join(','));
-  endpointAndQueryString += "&".concat(Object.entries(targetValues).filter(function (setting) {
-    return !!setting[1];
-  }).map(function (setting) {
-    return "target_".concat(setting[0], "=").concat(setting[1]);
+  endpointAndQueryString += "&".concat(Object.entries(targetValues).filter(function (_ref2) {
+    var _ref3 = (0, _slicedToArray2.default)(_ref2, 2),
+        value = _ref3[1];
+
+    return !!value;
+  }).map(function (_ref4) {
+    var _ref5 = (0, _slicedToArray2.default)(_ref4, 2),
+        setting = _ref5[0],
+        value = _ref5[1];
+
+    return "target_".concat(setting, "=").concat(value);
   }).join('&'));
-  return (0, _utils.getFromAPI)(endpointAndQueryString, 'recommendations');
+  return (0, _utils.getFromAPI)(endpointAndQueryString);
 };
 
 exports.getRecommendations = getRecommendations;
 
 var getCurrentPlaylists = function getCurrentPlaylists() {
-  return (0, _utils.getFromAPI)('/me/playlists?limit=50', 'current playlists');
+  return (0, _utils.getFromAPI)('/me/playlists?limit=50');
 };
 
 exports.getCurrentPlaylists = getCurrentPlaylists;
@@ -25447,26 +25456,26 @@ var editPlayListSongs = function editPlayListSongs(id, recommendations) {
   endpointAndQueryString += recommendations.map(function (track) {
     return "spotify:track:".concat(track.id);
   }).join(',');
-  return (0, _utils.getFromAPI)(endpointAndQueryString, 'adding tracks to playlist', 'PUT');
+  return (0, _utils.getFromAPI)(endpointAndQueryString, 'PUT');
 };
 
 exports.editPlayListSongs = editPlayListSongs;
 
 var makeUserPlaylist = /*#__PURE__*/function () {
-  var _ref2 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+  var _ref6 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
     var userInfo, id, createdPlaylist;
     return _regenerator.default.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return (0, _utils.getFromAPI)('/me', 'user info');
+            return (0, _utils.getFromAPI)('/me');
 
           case 2:
             userInfo = _context.sent;
             id = userInfo.id;
             _context.next = 6;
-            return (0, _utils.getFromAPI)("/users/".concat(id, "/playlists"), 'creating playlist', 'POST', JSON.stringify({
+            return (0, _utils.getFromAPI)("/users/".concat(id, "/playlists"), 'POST', JSON.stringify({
               name: 'moodMojo',
               description: 'Playlist to match your mood.'
             }));
@@ -25484,7 +25493,7 @@ var makeUserPlaylist = /*#__PURE__*/function () {
   }));
 
   return function makeUserPlaylist() {
-    return _ref2.apply(this, arguments);
+    return _ref6.apply(this, arguments);
   };
 }();
 
@@ -25538,13 +25547,13 @@ var playlistSettingOptions = {
   }
 };
 exports.playlistSettingOptions = playlistSettingOptions;
-var defaultPlaylistSettings = Object.values(playlistSettingOptions).reduce(function (a, _ref3) {
-  var spotifyKey = _ref3.spotifyKey,
-      defaultValue = _ref3.defaultValue;
+var defaultPlaylistSettings = Object.values(playlistSettingOptions).reduce(function (a, _ref7) {
+  var spotifyKey = _ref7.spotifyKey,
+      defaultValue = _ref7.defaultValue;
   return _objectSpread(_objectSpread({}, a), {}, (0, _defineProperty2.default)({}, spotifyKey, (a[spotifyKey] || 0) + defaultValue));
 }, {});
 exports.defaultPlaylistSettings = defaultPlaylistSettings;
-},{"@babel/runtime/helpers/interopRequireDefault":"SpGf","@babel/runtime/regenerator":"PMvg","@babel/runtime/helpers/defineProperty":"IxO8","@babel/runtime/helpers/asyncToGenerator":"agGE","~/lib/utils":"UOOq"}],"vqfX":[function(require,module,exports) {
+},{"@babel/runtime/helpers/interopRequireDefault":"SpGf","@babel/runtime/regenerator":"PMvg","@babel/runtime/helpers/defineProperty":"IxO8","@babel/runtime/helpers/asyncToGenerator":"agGE","@babel/runtime/helpers/slicedToArray":"HETk","~/lib/utils":"UOOq"}],"vqfX":[function(require,module,exports) {
 
 },{}],"O4SA":[function(require,module,exports) {
 "use strict";
@@ -25937,13 +25946,13 @@ exports.getTrackAudioFeatures = exports.getTracks = void 0;
 var _utils = require("~/lib/utils");
 
 var getTracks = function getTracks(searchExpression) {
-  return (0, _utils.getFromAPI)("/search?type=track&q=".concat(searchExpression), 'tracks');
+  return (0, _utils.getFromAPI)("/search?type=track&q=".concat(searchExpression));
 };
 
 exports.getTracks = getTracks;
 
 var getTrackAudioFeatures = function getTrackAudioFeatures(id) {
-  return (0, _utils.getFromAPI)("/audio-features?ids=".concat(id), 'track audio features');
+  return (0, _utils.getFromAPI)("/audio-features?ids=".concat(id));
 };
 
 exports.getTrackAudioFeatures = getTrackAudioFeatures;
@@ -27508,7 +27517,6 @@ var PageObj = {
 
 var App = function App(_ref) {
   var history = _ref.history;
-  console.log(process && process.env && process.env.RENDER_PAGE || "Default");
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Menu.default, {
     history: history
   }), (process && process.env && process.env.NODE_ENV || "production") === 'development' ? /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
@@ -27524,7 +27532,7 @@ var App = function App(_ref) {
   }), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     component: _pages.Default
   })) : /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    component: PageObj[process && process.env && process.env.RENDER_PAGE || "Default"]
+    component: PageObj[process && process.env && process.env.RENDER_PAGE || "SpotifyCallback"]
   }));
 };
 
@@ -27547,6 +27555,7 @@ Object.defineProperty(exports, "default", {
 
 var _App = _interopRequireDefault(require("./App"));
 },{"@babel/runtime/helpers/interopRequireDefault":"SpGf","./App":"iVK9"}],"Focm":[function(require,module,exports) {
+var process = require("process");
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
@@ -27559,6 +27568,6 @@ var _reactRouterDom = require("react-router-dom");
 
 var _App = _interopRequireDefault(require("./App"));
 
-(0, _reactDom.render)( /*#__PURE__*/_react.default.createElement(_reactRouterDom.MemoryRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('app'));
-},{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-dom":"NKHc","react-router-dom":"obMO","./App":"Sz1i"}]},{},["Focm"], null)
-//# sourceMappingURL=src.18b216ea.js.map
+(0, _reactDom.render)((process && process.env && process.env.NODE_ENV || "production") === 'development' ? /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null)) : /*#__PURE__*/_react.default.createElement(_reactRouterDom.MemoryRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null)), document.getElementById('app'));
+},{"@babel/runtime/helpers/interopRequireDefault":"SpGf","react":"n8MK","react-dom":"NKHc","react-router-dom":"obMO","./App":"Sz1i","process":"pBGv"}]},{},["Focm"], null)
+//# sourceMappingURL=src.3e7f1e27.js.map

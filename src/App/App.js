@@ -7,7 +7,6 @@ import './App.scss';
 const PageObj = { Default, Generator, Home, SpotifyCallback }
 
 const App = ({ history }) => {
-  console.log(process.env.RENDER_PAGE);
   return (
     <>
       <Menu history={history} />

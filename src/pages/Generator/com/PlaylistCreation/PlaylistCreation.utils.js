@@ -4,29 +4,28 @@ export const getRecommendations = ({ seedTrackIds, targetValues }) => {
   let endpointAndQueryString = '/recommendations?limit=50';
   endpointAndQueryString += `&seed_tracks=${seedTrackIds.join(',')}`;
   endpointAndQueryString += `&${Object.entries(targetValues)
-    .filter(setting => !!setting[1])
-    .map(setting => `target_${setting[0]}=${setting[1]}`)
+    .filter(([,value]) => !!value)
+    .map(([setting, value]) => `target_${setting}=${value}`)
     .join('&')}`;
-  return getFromAPI(endpointAndQueryString, 'recommendations');
+  return getFromAPI(endpointAndQueryString);
 };
 
 export const getCurrentPlaylists = () =>
-  getFromAPI('/me/playlists?limit=50', 'current playlists');
+  getFromAPI('/me/playlists?limit=50');
 
 export const editPlayListSongs = (id, recommendations) => {
   let endpointAndQueryString = `/playlists/${id}/tracks?uris=`;
   endpointAndQueryString += recommendations
     .map(track => `spotify:track:${track.id}`)
     .join(',');
-  return getFromAPI(endpointAndQueryString, 'adding tracks to playlist', 'PUT');
+  return getFromAPI(endpointAndQueryString, 'PUT');
 };
 
 export const makeUserPlaylist = async () => {
-  const userInfo = await getFromAPI('/me', 'user info');
+  const userInfo = await getFromAPI('/me');
   const { id } = userInfo;
   const createdPlaylist = await getFromAPI(
     `/users/${id}/playlists`,
-    'creating playlist',
     'POST',
     JSON.stringify({ name: 'moodMojo', description: 'Playlist to match your mood.' })
   );
