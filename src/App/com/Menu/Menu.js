@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaSignOutAlt, FaHeadphones, FaSpotify } from 'react-icons/fa';
 import MoodMojoLogo from '~/lib/images/moodmojo-logo.svg';
-import SpotifyLogo from '~/lib/images/Spotify_Logo_RGB_White.png';
+import SpotifyLogo from '~/lib/images/spotify-logo.png';
 import { getAuthorizeLink } from '~/lib/utils';
 import './Menu.scss';
 
