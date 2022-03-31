@@ -4,3 +4,5 @@
 /.cache/
 .cache
 /.cache
+dist
+/dist
