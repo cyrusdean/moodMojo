@@ -1,37 +1,49 @@
 @import '~/lib/vars';
 
 .generator {
+  margin-top: calc(-1 * var(--menu-height));
+  min-width: 950px;
   .track-selection {
     background-color: var(--green-primary);
-    min-height: calc(100vh - var(--menu-height));
+    // height: calc(50vh - var(--menu-height));
     display: flex;
-    flex-wrap: wrap;
-
-    h1 {
-      width: 100%;
-    }
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 75vh;
     .search-area {
-      margin: 0 40px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      margin-top: var(--menu-height);
       width: calc(50% - 80px);
       position: relative;
-
+      padding-right: 40px;
+      h1 {
+        text-align: left;
+        margin: 15px 0;
+      }
       .search {
+        position: relative;
+        max-width: 600px;
         input {
           width: 100%;
           border: none;
           font-size: 30px;
-          padding: 10px;
+          padding: 15px 15px 15px 55px;
           border-radius: 5px;
           box-sizing: border-box;
-          color: #2f2b2b;
+          color: var(--blue-primary);
           font-weight: bold;
+          &::placeholder {
+            color: #ccc;
+          }
         }
         svg {
           position: absolute;
-          right: 10px;
-          top: 8px;
-          width: 35px;
-          height: 35px;
+          left: 15px;
+          top: 20px;
+          width: 25px;
+          height: 25px;
           cursor: pointer;
         }
       }
@@ -46,25 +58,43 @@
     h1 {
       width: 100%;
       margin-top: 50px;
-      color: #0b60b1;
+      color: var(--light-blue);
     }
     button {
-      margin: 40px;
-      margin-left: auto;
-      color: var(--green-primary);
-      border-color: var(--green-primary);
-      font-size: 30px;
+      margin: 100px auto;
+      color: var(--blue-primary);
+      border-color: none;
+      border: none;
+      font-size: 25px;
+      font-weight: bold;
+      padding: 20px 40px;
+      background: var(--green-primary);
+      animation: pulse 2s infinite;
+      &:hover {
+        animation: none;
+        opacity: 1;
+      }
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(0.96);
+        box-shadow: 0 0 0 0 rgb(92 219 148 / 70%);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 20px rgb(92 219 148 / 0%);
+      }
+
+      100% {
+        transform: scale(0.96);
+        box-shadow: 0 0 0 0 rgb(92 219 148 / 0%);
+      }
     }
   }
 
   @media only screen and (max-width: $desktop) {
     .track-selection .search-area {
-      height: 570px;
-      margin: 100px auto;
-      margin-top: 50px;
-
-      margin: 0 40px;
-      width: calc(100% - 80px);
     }
   }
 }

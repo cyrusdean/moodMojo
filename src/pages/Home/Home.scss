@@ -7,48 +7,51 @@
   .step {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     background-color: var(--blue-primary);
-    padding: 50px;
+    padding: 150px 50px;
 
     > {
       h1,
       div,
       svg {
-        width: 50%;
-        margin: 0 30px;
-        max-height: 50vh;
+        // width: 50%;
+        // margin: 0 30px;
+        // max-height: 50vh;
         display: flex;
+        flex: 1;
         align-items: center;
         justify-content: center;
         flex-direction: column;
       }
+      button {
+        color: var(--green-primary);
+        border-color: var(--green-primary);
+      }
     }
     &.records-step {
-      h1 {
-        color: #0076e9;
-      }
       svg {
-        padding-left: 15%;
-        box-sizing: border-box;
+        width: 300px;
         overflow: visible;
       }
     }
     &.sliders-step {
       background-color: #01e08f;
+      h1 {
+        color: #05396b;
+      }
+      svg {
+        max-height: 40vh;
+      }
+      button {
+        color: var(--blue-primary);
+        border-color: var(--blue-primary);
+      }
     }
     &.headphones-step {
       padding-bottom: 150px;
-
-      h1 {
-        color: #01e08f;
-      }
-      button {
-        display: block;
-        margin: 0 auto;
-        color: var(--green-primary);
-        border-color: var(--green-primary);
-        font-size: 30px;
+      svg {
+        width: 35%;
       }
     }
   }

@@ -7,18 +7,28 @@ const Home = () => {
     <div className="home">
       <HeroScene />
       <div className="step records-step">
-        <h1>Pick 1-5 Songs That Match Your Mood</h1>
+        <div>
+          <h1>Pick a couple songs that match your mood.</h1>
+          <a href="/generator">
+            <button>Get started</button>
+          </a>
+        </div>
         <Records />
       </div>
       <div className="step sliders-step">
         <Sliders />
-        <h1>Adjust Your Mood Setting Preferences</h1>
+        <div>
+          <h1>Adjust your mood setting preferences.</h1>
+          <a href="/generator">
+            <button>Get started</button>
+          </a>
+        </div>
       </div>
       <div className="step headphones-step">
         <div>
-          <h1> Listen To Your Playlist on Spotify!</h1>
+          <h1> Enjoy your custom playlist on Spotify.</h1>
           <a href="/generator">
-            <button>Get Your Custom Playlist!</button>
+            <button>Get started</button>
           </a>
         </div>
         <Headphones />

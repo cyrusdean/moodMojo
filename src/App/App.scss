@@ -19,7 +19,7 @@ p {
   margin: 0;
 }
 h1 {
-  font-size: 80px;
+  font-size: 50px;
   color: var(--light-green);
   text-align: center;
   margin: 30px 0;
@@ -42,11 +42,16 @@ a {
 }
 button {
   color: #ffffff;
-  font: inherit;
+  font-family: inherit;
   background-color: transparent;
-  font-size: 19px;
-  border-radius: 10px;
-  padding: 10px;
+  font-size: 18px;
+  border-radius: 6px;
+  padding: 10px 15px;
   border: 2px solid #ffffff;
   cursor: pointer;
+  transition: all 0.15s ease-in;
+  position: relative;
+  &:hover {
+    opacity: 0.8;
+  }
 }

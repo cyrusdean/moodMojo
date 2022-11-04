@@ -1,6 +1,6 @@
 import React from 'react';
 import './SearchResults.scss';
-import { FaPlus, FaPlay, FaPause, FaTimes } from 'react-icons/fa';
+import { FaPlus, FaPlay, FaPause, FaTimes, FaCheck, FaPlusCircle } from 'react-icons/fa';
 
 export const SearchResults = ({
   playing,
@@ -18,10 +18,14 @@ export const SearchResults = ({
       <div
         className={`search-result ${i === currentTrackIndex ? 'selected-result' : ''}`}
         key={i}
-        onClick={() => selectTrack(i)}
+        onClick={e => {
+          e.stopPropagation();
+          onPlay(i);
+        }}
       >
         <span className="search-result-info">
-          {song}, {artist}
+          <span>{song}</span>
+          <span>{artist}</span>
         </span>
         <div className="search-result-conrols">
           {!!url &&
@@ -33,15 +37,10 @@ export const SearchResults = ({
                 }}
               />
             ) : (
-              <FaPlay
-                onClick={e => {
-                  e.stopPropagation();
-                  onPlay(i);
-                }}
-              />
+              ''
             ))}
           {selectedTracks.filter(({ id }) => id === tracks[i].id).length ? (
-            <FaTimes
+            <FaCheck
               onClick={e => {
                 e.stopPropagation();
                 onRemoveSelected(trackId);

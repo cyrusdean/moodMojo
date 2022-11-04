@@ -66,7 +66,7 @@ export const PlaylistCreation = ({ selectedTracks, onRemoveSelected }) => {
         {selectedTracks.map(({ id, song, artist }, i) => (
           <div className="selected-track" key={i}>
             <span className="selected-track-info">
-              {song}, {artist}
+              {song} by {artist}
             </span>
             <FaTimes onClick={() => onRemoveSelected(id)} />
           </div>
@@ -93,7 +93,12 @@ export const PlaylistCreation = ({ selectedTracks, onRemoveSelected }) => {
                   })
                 }
                 style={{ width: '20px' }}
-                handleStyle={{ width: '20px', height: '20px' }}
+                handleStyle={{
+                  width: '36px',
+                  height: '36px',
+                  marginLeft: '-13px',
+                  border: '6px solid var(--blue-primary)'
+                }}
                 railStyle={{ backgroundColor: 'var(--green-primary)', width: '10px' }}
               />
               <div className="slider-name">{label}</div>
@@ -105,7 +110,7 @@ export const PlaylistCreation = ({ selectedTracks, onRemoveSelected }) => {
         style={{ visibility: `${selectedTracks.length ? 'visible' : 'hidden'}` }}
         onClick={createPlaylist}
       >
-        Get Your PlayList!
+        Get your playlist
       </button>
     </>
   );

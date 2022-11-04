@@ -97,14 +97,15 @@ const Generator = () => {
   return (
     <div className="generator">
       <div className="track-selection">
-        <h1>Pick 1-5 Tracks</h1>
         <TrackCard {...getMusicTrackProps()} />
         <div className="search-area">
+          <h1>Pick a few songs...</h1>
           <div className="search">
             <input
               onKeyPress={e =>
                 e.charCode === 13 ? searchForTrack() : setSearchExpression(e.target.value)
               }
+              placeholder="search songs..."
             />
             <FaSearch onClick={searchForTrack} />
           </div>
@@ -112,7 +113,7 @@ const Generator = () => {
         </div>
       </div>
       <div className="settings">
-        <h1>Tune Your Mood</h1>
+        <h1>...tune your mood.</h1>
         <PlaylistCreation
           selectedTracks={selectedTracks}
           onRemoveSelected={removeTrackFromSelected}

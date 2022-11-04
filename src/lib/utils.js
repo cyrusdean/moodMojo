@@ -2,7 +2,10 @@ import getOffset from 'getOffset';
 import Swal from 'sweetalert2';
 
 const SPOTIFY_CLIENT_ID = 'e7e008fe415447bba73e3e6ce86e8ecb';
-const SPOTIFY_REDIRECT_URI = 'development' === process.env.NODE_ENV ? 'http://localhost:4000/spotify-callback' : 'https://moodmojo.cyrusdean.com/spotify-callback'
+const SPOTIFY_REDIRECT_URI =
+  'development' === process.env.NODE_ENV
+    ? 'http://localhost:4000/spotify-callback'
+    : 'https://moodmojo.cyrusdean.com/spotify-callback';
 
 const checkAccessTokenExpiration = async () => {
   if (localStorage.getItem('accessTokenExpiration') <= Date.now()) {

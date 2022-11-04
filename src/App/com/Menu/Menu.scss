@@ -1,27 +1,33 @@
 @import '~/lib/vars';
 
 nav.menu {
-  font-size: 4em;
-  padding: 10px;
+  padding: 10px 30px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   height: var(--menu-height);
   box-sizing: border-box;
   position: relative;
   z-index: 10;
-
-  .spotify-link {
-    border-right: 2px solid #ffffff;
-    padding-right: 10px;
-
-    img {
-      height: 48px;
+  align-items: center;
+  #logoLockup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .spotify-link {
+      img {
+        height: 30px;
+      }
     }
-  }
-  .home-link img {
-    height: 30px;
-    padding-left: 13px;
+    .home-link img {
+      height: 25px;
+      margin-top: 4px;
+    }
+    .pipeBar {
+      width: 2px;
+      height: 35px;
+      background-color: white;
+    }
   }
   a {
     color: #ffffff;

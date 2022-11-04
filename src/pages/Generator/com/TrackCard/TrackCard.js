@@ -11,9 +11,9 @@ export const TrackCard = ({ currentTrackIndex, tracks, showingDial, ...restProps
 
   return (
     <div className={`track-card ${showingDial ? 'flipped' : ''}`}>
-      <div className="front" style={coverImgStyle} />
+      {/* <div className="front" style={coverImgStyle} /> */}
       <div className="back" style={coverImgStyle}>
-        <div className="album-overlay" />
+        {/* <div className="album-overlay" /> */}
 
         <MusicDial currentTrackIndex={currentTrackIndex} tracks={tracks} {...restProps} />
       </div>
