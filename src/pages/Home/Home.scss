@@ -9,8 +9,7 @@
     display: flex;
     justify-content: space-around;
     background-color: var(--blue-primary);
-    padding: 150px 50px;
-
+    padding: 100px 75px;
     > {
       h1,
       div,
@@ -24,10 +23,18 @@
         justify-content: center;
         flex-direction: column;
       }
-      button {
-        color: var(--green-primary);
-        border-color: var(--green-primary);
+    }
+    .lottieWrapper {
+      > div {
+        overflow: visible !important;
       }
+      svg {
+        width: 80% !important;
+      }
+    }
+    button {
+      color: var(--green-primary);
+      border-color: var(--green-primary);
     }
     &.records-step {
       svg {
@@ -40,7 +47,7 @@
       h1 {
         color: #05396b;
       }
-      svg {
+      > svg {
         max-height: 40vh;
       }
       button {
@@ -59,28 +66,37 @@
   @media only screen and (max-width: $desktop) {
     .step {
       flex-wrap: wrap;
-
       > h1,
       div {
         width: 100%;
         margin: 0;
         margin-bottom: 50px;
       }
-      svg {
+      > svg {
         margin: 0 auto;
-      }
-      &.sliders-step {
-        flex-direction: column-reverse;
       }
     }
   }
   @media only screen and (max-width: $laptop) {
     .step {
+      flex-direction: column;
+      &.sliders-step {
+        flex-direction: column-reverse;
+      }
       h1 {
         font-size: 55px;
       }
-      svg {
+      > svg {
         max-height: 25vh;
+      }
+    }
+  }
+  @media only screen and (max-width: $mobile) {
+    .step {
+      padding: 10px;
+
+      h1 {
+        font-size: 42px;
       }
     }
   }
